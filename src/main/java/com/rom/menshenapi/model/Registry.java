@@ -2,11 +2,12 @@ package com.rom.menshenapi.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,19 +20,18 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Registry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne
-    @JoinTable(name = "user_id")
-    private Employee employee;
+    @JsonProperty("employee_id")
+    private long employeeId;
 
-    @ManyToOne
-    @JoinTable(name = "location_id")
-    private Location location;
+    @JsonProperty("location_id")
+    private long locationId;
 
     private LocalDate inTime;
 
