@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,12 +27,18 @@ public class Employee {
 
     private String fullname;
 
+    @JsonProperty("id_type")
     private String idType;
 
+    @JsonProperty("id_number")
     private String idNumber;
 
+    @JsonProperty("blood_type")
     private String bloodType;
 
     private String position;
+
+    @JsonProperty("current_location")
+    private long currentLocation;
 
 }
